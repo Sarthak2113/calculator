@@ -4,6 +4,11 @@ public class calci
 { 
    public static double read_exp(String expression) 
    { 
+      //Check if the first number is negative
+      if(expression.charAt(0)=='-')
+      {
+         expression = "0"+expression;
+      }
       char[] ar_tok = expression.toCharArray(); 
       Stack<Double> values = new Stack<Double>();  // For storing numbers 
       Stack<Character> sta_obj = new Stack<Character>(); //For storing operators
