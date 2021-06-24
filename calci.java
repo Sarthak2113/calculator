@@ -2,7 +2,7 @@ import java.util.*;
   
 public class calci 
 { 
-   public static double solve_this(String expression) 
+   public static double read_exp(String expression) 
    { 
       char[] ar_tok = expression.toCharArray(); 
       Stack<Double> values = new Stack<Double>();  // For storing numbers 
@@ -44,7 +44,7 @@ public class calci
          {
             try{
             while (sta_obj.peek() != '(') 
-               values.push(applyOp(sta_obj.pop(), values.pop(), values.pop())); 
+               values.push(implement_operation(sta_obj.pop(), values.pop(), values.pop())); 
             }
             catch (Exception e){
                System.out.println("Not a valid expression");
@@ -56,7 +56,7 @@ public class calci
          ar_tok[i] == '*' || ar_tok[i] == '/') 
          {
             while (!sta_obj.empty() && hasPrecedence(ar_tok[i], sta_obj.peek())) 
-               values.push(applyOp(sta_obj.pop(), values.pop(), values.pop())); 
+               values.push(implement_operation(sta_obj.pop(), values.pop(), values.pop())); 
             sta_obj.push(ar_tok[i]); 
          }
          else{
@@ -71,7 +71,7 @@ public class calci
       }
       try{
          while (!sta_obj.empty()) 
-         values.push(applyOp(sta_obj.pop(), values.pop(), values.pop()));
+         values.push(implement_operation(sta_obj.pop(), values.pop(), values.pop()));
       }
       catch (Exception e)
       {
@@ -91,7 +91,7 @@ public class calci
       return true;
    }
  
-   public static double applyOp(char oper, double var2, double var1) 
+   public static double implement_operation(char oper, double var2, double var1) 
       { 
       switch (oper)
       { 
@@ -123,7 +123,7 @@ public class calci
       System.out.println("******Enter the expression******");
       String input = sc.nextLine();
       System.out.println("******OUTPUT******");
-      Double ans = Double.valueOf(calci.solve_this(input));
+      Double ans = Double.valueOf(calci.read_exp(input));
       if(ans.isNaN()==false)
       {
          if((ans == Math.floor(ans)) && !Double.isInfinite(ans))
