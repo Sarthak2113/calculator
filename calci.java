@@ -55,8 +55,14 @@ public class calci
          else if (ar_tok[i] == '+' || ar_tok[i] == '-' || 
          ar_tok[i] == '*' || ar_tok[i] == '/') 
          {
+            try{
             while (!sta_obj.empty() && hasPrecedence(ar_tok[i], sta_obj.peek())) 
                values.push(implement_operation(sta_obj.pop(), values.pop(), values.pop())); 
+            }
+            catch (Exception e){
+               System.out.println("Invalid Expression");
+               return Double.NaN;
+            }
             sta_obj.push(ar_tok[i]); 
          }
          else{
