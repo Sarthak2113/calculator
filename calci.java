@@ -122,7 +122,7 @@ public class calci
       Scanner sc=new Scanner(System.in);
       System.out.println("******Enter the expression******");
       String input = sc.nextLine();
-      System.out.println("******OUTPUTS******");
+      System.out.println("******OUTPUT******");
       Double ans = Double.valueOf(calci.solve_this(input));
       if(ans.isNaN()==false)
       {
